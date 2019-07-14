@@ -1,9 +1,7 @@
-const connect = require('./connect')
+const { connect } = require('./connect')
 
 module.exports = {
-    start(page, url){
-        login(page, url)
-    }
+    login
 }
 
 async function login(page, url){
@@ -20,10 +18,10 @@ async function login(page, url){
         await page.type('#inputPassword', process.env.PASSWORD)
 
         await page.click('#conect-button')
-        
+
         await page.screenshot({ path: 'status.png' })
 
-        connect.start(page, url)
+        connect(page, url)
     }
     catch(error){
         console.error(error)

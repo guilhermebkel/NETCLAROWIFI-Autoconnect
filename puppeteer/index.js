@@ -1,7 +1,7 @@
 const puppeteer = require('puppeteer-core')
-const verify = require('./services/verify')
-const login = require('./services/login')
-const connect = require('./services/connect')
+const { verify } = require('./services/verify')
+const { login } = require('./services/login')
+const { connect } = require('./services/connect')
 const homeURL = process.env.URL
 
 module.exports = {
@@ -21,9 +21,9 @@ async function setup(){
         await page.setViewport({ width: 1366, height: 768 })
     
         console.log('Verifying if login is needed...')
-        await verify.start(page, homeURL) && process.env.AUTOCONNECT
-        ? connect.start(page, homeURL)
-        : login.start(page, homeURL) 
+        await verify(page, homeURL) && process.env.AUTOCONNECT
+        ? connect(page, homeURL)
+        : login(page, homeURL) 
     }
     catch(error){
         console.error(error)

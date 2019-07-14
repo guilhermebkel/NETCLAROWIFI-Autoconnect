@@ -1,8 +1,5 @@
 module.exports = {
-    async start(page, url){
-        const response = await verify(page, url)
-        return response
-    }
+    verify
 }
 
 async function verify(page, url){
