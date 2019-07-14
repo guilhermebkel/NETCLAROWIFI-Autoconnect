@@ -8,11 +8,7 @@ module.exports = {
 async function verify(page, url){
     try{
         await page.goto( url, { waitUntil: 'domcontentloaded' })
-        const select = await page.evaluate(() => {
-            let elements = document.querySelector('form').innerText;
-            return elements
-        });
-        return select
+        return await page.evaluate(() => document.querySelector('#forgotLink').innerText)
     }
     catch(error){
         console.error(error)

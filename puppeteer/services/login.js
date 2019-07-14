@@ -1,3 +1,5 @@
+const connect = require('./connect')
+
 module.exports = {
     start(page, url){
         login(page, url)
@@ -8,6 +10,7 @@ async function login(page, url){
     try{
         console.log('=> Logging in...')
         await page.goto( url, { waitUntil: 'domcontentloaded' })
+        await page.screenshot({ path: 'basicRender.png' })
 
         await page.click('#identify-choose')
         await page.keyboard.press('ArrowDown')
@@ -19,6 +22,8 @@ async function login(page, url){
 
         await page.click('#conect-button')
         await page.screenshot({ path: 'basicRender.png' })
+
+        connect.start(page, url)
     }
     catch(error){
         console.error(error)
