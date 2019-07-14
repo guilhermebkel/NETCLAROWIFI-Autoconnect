@@ -1,14 +1,13 @@
 module.exports = {
-    start(page, url){
-        connect(page, url)
-    }
+    connect
 }
 
 async function connect(page, url){
     try{
         console.log('=> Connecting...')
-        await page.goto( url, { timeout: 40000, waitUntil: 'domcontentloaded' })
-        await page.click('#identify-choose')
+        await page.goto( process.env.KEY || url, { waitUntil: 'domcontentloaded' })
+        await page.click('#formVideo > button')
+        await page.click('#linkNavigate')
         console.log('----> DONE!')
     }
     catch(error){

@@ -12,6 +12,9 @@ You need to create a .env file in the root folder using the credencials you usua
 EMAIL=
 PASSWORD=
 URL=
+KEY=
+AUTOCONNECT=false
+TIME_INTERVAL=
 ```
 
 ## Run
