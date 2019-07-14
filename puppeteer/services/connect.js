@@ -7,9 +7,7 @@ async function connect(page, url){
         console.log('=> Connecting...')
         await page.goto( process.env.KEY || url, { waitUntil: 'domcontentloaded' })
         await page.click('#formVideo > button')
-        setTimeout(async () => {
-            await page.screenshot({ path: 'status.png' })
-        }, 10000)
+        await page.click('#linkNavigate')
         console.log('----> DONE!')
     }
     catch(error){
