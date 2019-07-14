@@ -10,7 +10,6 @@ async function login(page, url){
     try{
         console.log('=> Logging in...')
         await page.goto( url, { waitUntil: 'domcontentloaded' })
-        await page.screenshot({ path: 'basicRender.png' })
 
         await page.click('#identify-choose')
         await page.keyboard.press('ArrowDown')
@@ -21,7 +20,8 @@ async function login(page, url){
         await page.type('#inputPassword', process.env.PASSWORD)
 
         await page.click('#conect-button')
-        await page.screenshot({ path: 'basicRender.png' })
+        
+        await page.screenshot({ path: 'status.png' })
 
         connect.start(page, url)
     }
