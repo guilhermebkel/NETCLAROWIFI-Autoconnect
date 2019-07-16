@@ -2,7 +2,7 @@ module.exports = {
     connect
 }
 
-async function connect(page, url){
+async function connect(page, url, browser){
     try{
         console.log('=> Connecting...')
         await page.goto( process.env.KEY || url, { waitUntil: 'domcontentloaded' })
@@ -12,7 +12,7 @@ async function connect(page, url){
 
         setTimeout(async () => {
             const isConnected = await page.evaluate(() => document.querySelector('body > div.container.container-success > div > div.row.col-md-12.col-sm-12 > div > div.saudacao > div'))
-            if (isConnected) return console.log('----> ALREADY CONNECTED!') && await page.close()
+            if (isConnected) return console.log('----> ALREADY CONNECTED!') && await browser.close()
         }, 5000)
         
         await page.waitForSelector('#video > div.vjs-poster', { visible: true, timeout: 0 })
@@ -24,11 +24,11 @@ async function connect(page, url){
         }, 5000)
 
         await page.waitForSelector('body > div.container.container-success > div > div.row.col-md-12.col-sm-12 > div > div.saudacao > div', { visible: true, timeout: 0 })
-        await page.close()
+        await browser.close()
         console.log('----> DONE!')
     }
     catch(error){
-        await page.close()
+        await browser.close()
         console.error(error)
     }
 }

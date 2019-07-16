@@ -25,9 +25,9 @@ async function setup(){
         }
         else{
             console.log('Verifying if login is needed...')
-            await verify(page, homeURL)
-            ? login(page, homeURL) 
-            : connect(page, homeURL)
+            await verify(page, homeURL, browser)
+            ? login(page, homeURL, browser) 
+            : connect(page, homeURL, browser)
         } 
     }
     catch(error){
