@@ -5,7 +5,7 @@ module.exports = {
 async function connect(page, url, browser){
     try{
         console.log('=> Connecting...')
-        await page.goto( process.env.KEY || url, { waitUntil: 'domcontentloaded' })
+        await page.goto( process.env.AUTOCONNECT ? process.env.KEY : url, { waitUntil: 'domcontentloaded' })
 
         console.log('Clicked on connect button...')
         await page.click('#formVideo > button')
