@@ -18,7 +18,7 @@ async function setup(){
     
         console.log('Setting up configurations...')
         await page.setUserAgent('Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/73.0.3683.75 Chrome/73.0.3683.75 Safari/537.36');
-        await page.setViewport({ width: 1366, height: 768 })
+        await page.setViewport({ width: 500, height: 500 })
     
         if(process.env.AUTOCONNECT){
             connect(page, homeURL, browser)
