@@ -10,7 +10,6 @@ async function connect(page, url){
         console.log('Clicked on connect button...')
         await page.click('#formVideo > button')
 
-        page.waitForNavigation({ waitUntil: 'networkidle0' })
         const isConnected = await page.evaluate(() => document.querySelector('body > div.container.container-success > div > div.row.col-md-12.col-sm-12 > div > div.saudacao > div').innerText)
         if (isConnected) return console.log('----> ALREADY CONNECTED!')
         
