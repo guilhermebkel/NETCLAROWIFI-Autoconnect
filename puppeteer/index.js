@@ -21,13 +21,13 @@ async function setup(){
         await page.setViewport({ width: 1366, height: 768 })
     
         if(process.env.AUTOCONNECT){
-            connect(page, homeURL)
+            connect(page, homeURL, browser)
         }
         else{
             console.log('Verifying if login is needed...')
-            await verify(page, homeURL)
-            ? login(page, homeURL) 
-            : connect(page, homeURL)
+            await verify(page, homeURL, browser)
+            ? login(page, homeURL, browser) 
+            : connect(page, homeURL, browser)
         } 
     }
     catch(error){
