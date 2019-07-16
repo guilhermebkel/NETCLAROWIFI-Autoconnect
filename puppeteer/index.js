@@ -22,6 +22,9 @@ async function setup(){
     
         if(process.env.AUTOCONNECT){
             connect(page, homeURL, browser)
+            setInterval(async () => {
+                await connect(page, homeURL, browser)
+            }, 60000 * process.env.TIME_INTERVAL)
         }
         else{
             console.log('Verifying if login is needed...')

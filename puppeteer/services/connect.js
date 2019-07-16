@@ -12,7 +12,7 @@ async function connect(page, url, browser){
 
         setTimeout(async () => {
             const isConnected = await page.evaluate(() => document.querySelector('body > div.container.container-success > div > div.row.col-md-12.col-sm-12 > div > div.saudacao > div'))
-            if (isConnected) return console.log('----> ALREADY CONNECTED!') && await browser.close()
+            if (isConnected) return console.log('----> ALREADY CONNECTED!')
         }, 5000)
         
         await page.waitForSelector('#video > div.vjs-poster', { visible: true, timeout: 0 })
@@ -24,11 +24,9 @@ async function connect(page, url, browser){
         }, 5000)
 
         await page.waitForSelector('body > div.container.container-success > div > div.row.col-md-12.col-sm-12 > div > div.saudacao > div', { visible: true, timeout: 0 })
-        await browser.close()
         console.log('----> DONE!')
     }
     catch(error){
-        await browser.close()
         console.error(error)
     }
 }
