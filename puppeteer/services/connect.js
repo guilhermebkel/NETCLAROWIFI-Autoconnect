@@ -13,7 +13,7 @@ async function connect(page, url){
         setTimeout(async () => {
             const isConnected = await page.evaluate(() => document.querySelector('body > div.container.container-success > div > div.row.col-md-12.col-sm-12 > div > div.saudacao > div'))
             if (isConnected) return console.log('----> ALREADY CONNECTED!')
-        }, 2000)
+        }, 5000)
         
         await page.waitForSelector('#video > div.vjs-poster', { visible: true, timeout: 0 })
         console.log('Browsed into sponsor page...')
